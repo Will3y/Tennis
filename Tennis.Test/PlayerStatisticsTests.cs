@@ -21,32 +21,37 @@ namespace Tennis.Test
         }
 
         [TestMethod]
+        public void TestGetPlayers()
+        {
+            var Players = PlayersDataService.GetPlayers();
+            Assert.AreEqual(5, Players.Count);
+        }
+
+        [TestMethod]
+        public void TestGetPlayersById()
+        {
+            var Player = PlayersDataService.GetPlayersById(52);
+            Assert.AreEqual("Novak", Player.FirstName);
+        }
+
+        [TestMethod]
         public void TestCountryWithHighestWinRatio()
         {
-            // Act
             var countryWithHighestWinRatio = PlayersDataService.GetCountryWithHighestWinRatio();
-
-            // Assert
             Assert.AreEqual("SRB", countryWithHighestWinRatio);
         }
 
         [TestMethod]
         public void TestAveragePlayerBMI()
         {
-            // Act
             var averagePlayerBMI = PlayersDataService.GetAverageIMC();
-
-            // Assert
             Assert.AreEqual(23.35, averagePlayerBMI, 0.01);
         }
 
         [TestMethod]
         public void TestMedianPlayerHeight()
         {
-            // Act
             var medianPlayerHeight = PlayersDataService.GetMedianHeight();
-
-            // Assert
             Assert.AreEqual(185, medianPlayerHeight);
         }
     }
